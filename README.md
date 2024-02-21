@@ -30,3 +30,23 @@ Agregar el siguiente código en su checkout
 ```
  $.getScript({{url del script necesario}})
 ```
+
+URL para MX
+```
+https://cdn.jsdelivr.net/gh/InfracommerJuanPanchana/vtex-b2bill@main/b2b-mx.min.js
+```
+
+URL para CL
+```
+https://cdn.jsdelivr.net/gh/InfracommerJuanPanchana/vtex-b2bill@main/b2b-cl.min.js
+```
+
+URL para ARG
+```
+https://cdn.jsdelivr.net/gh/InfracommerJuanPanchana/vtex-b2bill@main/b2b-arg.min.js
+```
+
+Ejemplo 
+```
+$.getScript("https://cdn.jsdelivr.net/gh/InfracommerJuanPanchana/vtex-b2bill@main/b2b-mx.min.js")
+```
