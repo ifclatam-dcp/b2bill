@@ -33,20 +33,20 @@ Agregar el siguiente código en su checkout
 
 URL para MX
 ```
-https://cdn.jsdelivr.net/gh/InfracommerJuanPanchana/vtex-b2bill@main/b2b-mx.min.js
+https://cdn.jsdelivr.net/gh/ifclatam-dcp/vtex-b2bill@main/b2b-mx.min.js
 ```
 
 URL para CL
 ```
-https://cdn.jsdelivr.net/gh/InfracommerJuanPanchana/vtex-b2bill@main/b2b-cl.min.js
+https://cdn.jsdelivr.net/gh/ifclatam-dcp/vtex-b2bill@main/b2b-cl.min.js
 ```
 
 URL para ARG
 ```
-https://cdn.jsdelivr.net/gh/InfracommerJuanPanchana/vtex-b2bill@main/b2b-arg.min.js
+https://cdn.jsdelivr.net/gh/ifclatam-dcp/vtex-b2bill@main/b2b-arg.min.js
 ```
 
 Ejemplo 
 ```
-$.getScript("https://cdn.jsdelivr.net/gh/InfracommerJuanPanchana/vtex-b2bill@main/b2b-mx.min.js")
+$.getScript("https://cdn.jsdelivr.net/gh/ifclatam-dcp/vtex-b2bill@main/b2b-mx.min.js")
 ```
