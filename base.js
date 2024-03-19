@@ -434,15 +434,19 @@ window.onload = function () {
 
 const onDefaultInformation = () => {
     if (vtexjs) {
-        const countryCode = vtexjs?.checkout?.orderForm?.storePreferencesData?.countryCode;
         const customData = vtexjs?.checkout?.orderForm?.customData?.customApps || [];
         if (!customData.length) {
-            vtexjs.checkout.setCustomData({ field: "isCorporateOms", app: appName, value: "false" })
-            vtexjs.checkout.setCustomData({ field: "Country-Code", app: appName, value: countryCode })
-            vtexjs.checkout.setCustomData({ field: "CFDI-required", app: appName, value: "false" })
-            vtexjs.checkout.setCustomData({ field: "state", app: appName, value: countryCode })
+          onForceData()
         }
     }
+}
+
+const onForceData = () => {
+  const countryCode = vtexjs?.checkout?.orderForm?.storePreferencesData?.countryCode;
+  setCustomData({ field: "isCorporateOms", app: appName, value: "false" })
+  setCustomData({ field: "Country-Code", app: appName, value: countryCode })
+  setCustomData({ field: "CFDI-required", app: appName, value: "false" })
+  // setCustomData({ field: "state", app: appName, value: countryCode })
 }
 
 const onMutation = () => {
@@ -481,7 +485,7 @@ $(document).ready(function(){
             removeCustomData("business-line");
             removeCustomData("address");
             removeCustomData("RFC");
-            setCustomData({ field: "CFDI-required", app: appName, value: "false" })
+            onForceData();
         }
 
     }, 1000);
@@ -511,7 +515,7 @@ $(window).on('hashchange', function(e){
             removeCustomData("business-line");
             removeCustomData("address");
             removeCustomData("RFC");
-            setCustomData({ field: "CFDI-required", app: appName, value: "false" })
+            onForceData();
         }
     }, 1000);
 });
@@ -536,7 +540,7 @@ const onAttachmentB2BButton = () => {
             removeCustomData("business-line");
             removeCustomData("address");
             removeCustomData("RFC");
-            setCustomData({ field: "CFDI-required", app: appName, value: "false" })
+            onForceData();
         }
         $(".corporate-hide-link").css("display", "none")
         $(".form-step.box-edit > .box-client-info > .row-fluid").append(`
@@ -558,7 +562,9 @@ const onAttachmentB2BButton = () => {
  
         `);
 
-        $("#CFDI-no").click()
+        setTimeout(() => {
+            $("#CFDI-no").click()
+        }, 1500);
 
         $('input[name="cfdi"]').change(function () {
             if ($(this).is(":checked")) {
