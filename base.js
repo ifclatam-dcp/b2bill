@@ -491,7 +491,6 @@ $(window).on('hashchange', function(e){
     
     setTimeout(() => {
         if (window?.location?.hash === '#/profile' && $("#b2b-form-container").length) {
-            console.log("remove function")
             $("#b2b-form-container").remove();
             $(".container-custom-data-form").remove();
             $("#button-b2b-form").remove();
@@ -739,8 +738,6 @@ const setFormCustom = () => {
             const corporateInfoBox = $('#button-b2b-form')
             const formCustom = $('.container-custom-data-form-element')
             // const buttonContinue = $('#go-to-shipping')
-
-            console.log("corporateInfoBox", corporateInfoBox.length ,formCustom.length)
           
             if (corporateInfoBox.length) {
                 const fieldsToMap = fields.map((item) => {
@@ -849,8 +846,7 @@ const onChangeB2bCFDI = (id) => {
         }
 
         const selectedElement = FIELD_CFDI[0].options.findIndex(o => eliminarDiacriticosEs(o) === eliminarDiacriticosEs(opcionSeleccionada));
-        const selectedSub = FIELD_CFDI[0].suboptions[selectedElement];
-        console.log("selectedElement", selectedElement, FIELD_CFDI[0], selectedSub, opcionSeleccionada, FIELD_CFDI[0].options)
+        const selectedSub = FIELD_CFDI[0].suboptions[selectedElement];        
 
         const selectedSubOptions = selectedSub.map(s => {
             return `<option value="${s}">${s}</option>`
@@ -915,14 +911,14 @@ const onChangeB2b = (id) => {
 
 const onValidateInput = (id) => {
     // const value = $(`#${id}`).val();
-    console.log("value",id)
+    
 }
 
 const onValidateButton = () => {
     if (type === "Moral") {
-        console.log("validFields",validFields)
+        
     } else {
-        console.log("validFieldsNormal",validFieldsNormal)
+        
     }
 }
 
@@ -1005,7 +1001,7 @@ const onBlurB2bForm = (name) => {
                     if (!f.isRequired) return false;
                     return !$(`#${f.name}`).val()
                 })
-console.log("isGeneralError ", isGeneralError )
+
                 if (!isGeneralError) {
                     $('#go-to-shipping, #go-to-payment').removeProp('disabled')
                     sessionStorage.setItem('b2b-form-complete', 'true');
@@ -1027,7 +1023,7 @@ console.log("isGeneralError ", isGeneralError )
 
             const isGeneralError = fields.some(f => {
                 const regexTest = new RegExp(f.regex);
-                console.log("regexTest", f.regex)
+                
                 if (!f.isRequired) return false;
                 if (!!(f.regex && !regexTest.test($(`#${f.name}`).val()))) return true;
                 return !$(`#${f.name}`).val()
