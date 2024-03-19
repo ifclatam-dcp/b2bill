@@ -481,7 +481,7 @@ $(document).ready(function(){
             removeCustomData("business-line");
             removeCustomData("address");
             removeCustomData("RFC");
-            vtexjs.checkout.setCustomData({ field: "CFDI-required", app: appName, value: "false" })
+            setCustomData({ field: "CFDI-required", app: appName, value: "false" })
         }
 
     }, 1000);
@@ -512,7 +512,7 @@ $(window).on('hashchange', function(e){
             removeCustomData("business-line");
             removeCustomData("address");
             removeCustomData("RFC");
-            vtexjs.checkout.setCustomData({ field: "CFDI-required", app: appName, value: "false" })
+            setCustomData({ field: "CFDI-required", app: appName, value: "false" })
         }
     }, 1000);
 });
@@ -537,7 +537,7 @@ const onAttachmentB2BButton = () => {
             removeCustomData("business-line");
             removeCustomData("address");
             removeCustomData("RFC");
-            vtexjs.checkout.setCustomData({ field: "CFDI-required", app: appName, value: "false" })
+            setCustomData({ field: "CFDI-required", app: appName, value: "false" })
         }
         $(".corporate-hide-link").css("display", "none")
         $(".form-step.box-edit > .box-client-info > .row-fluid").append(`
@@ -565,7 +565,7 @@ const onAttachmentB2BButton = () => {
             if ($(this).is(":checked")) {
                 var val = eval($(this).val());
                 const buttonb2bform = $("#button-b2b-form");
-                vtexjs.checkout.setCustomData({ field: "CFDI-required", app: appName, value: val })
+                setCustomData({ field: "CFDI-required", app: appName, value: val })
                 if (val) {
                     $('#go-to-shipping, #go-to-payment').prop('disabled', true)
                     const fieldsToMap = FIELD_CFDI.map((item) => {
@@ -631,18 +631,18 @@ const onAttachmentB2BButton = () => {
                     $('input[name="corporative"]').change(function () {
                         if ($(this).is(":checked")) {
                             var val = eval($(this).val());
-                            vtexjs.checkout.setCustomData({ field: "isCorporateOms", app: appName, value: val })
+                            setCustomData({ field: "isCorporateOms", app: appName, value: val })
                             typeInput = val ? "Moral" : "Fisica";
                             $(".container-custom-data-form-element").remove();
                             if (val) {
                                 $('#go-to-shipping, #go-to-payment').prop('disabled', true)
                                 resetInformation();
-                                 vtexjs.checkout.setCustomData({ field: "isCorporateOms", app: appName, value: "true" })
+                                //  vtexjs.checkout.setCustomData({ field: "isCorporateOms", app: appName, value: "true" })
                                 setFormCustom();
                             } else {
                                 $('#go-to-shipping, #go-to-payment').prop('disabled', true)
                                 resetInformation();
-                                 vtexjs.checkout.setCustomData({ field: "isCorporateOms", app: appName, value: "false" })
+                                //  vtexjs.checkout.setCustomData({ field: "isCorporateOms", app: appName, value: "false" })
                                 setFormCustomDefault();
                             }
                         }
@@ -666,7 +666,7 @@ const onAttachmentB2BButton = () => {
                     removeCustomData("business-line");
                     removeCustomData("address");
                     removeCustomData("RFC");
-                    vtexjs.checkout.setCustomData({ field: "CFDI-required", app: appName, value: "false" })
+                    setCustomData({ field: "CFDI-required", app: appName, value: "false" })
                     
                 }
             }
@@ -788,7 +788,7 @@ const onChangeB2bRegimen = (id) => {
     var selectElement = document.getElementById(id);
     var opcionSeleccionada = selectElement.options[selectElement.selectedIndex].value;
     if (opcionSeleccionada) {
-        vtexjs.checkout.setCustomData({ field: id, app: appName, value: opcionSeleccionada.split('-')[0] })
+        setCustomData({ field: id, app: appName, value: opcionSeleccionada.split('-')[0] })
     }
     
     if (typeInput === "Moral") {
@@ -860,7 +860,7 @@ const onChangeB2bCFDI = (id) => {
             <option disabled selected>Seleccione</option>
             ${selectedSubOptions.join('')}
         `)
-        vtexjs.checkout.setCustomData({ field: id, app: appName, value: opcionSeleccionada.split('-')[0] })
+        setCustomData({ field: id, app: appName, value: opcionSeleccionada.split('-')[0] })
 
         if (typeInput === "Moral") {
             const isGeneralError = fields.some(f => {
@@ -909,7 +909,7 @@ const onChangeB2b = (id) => {
     var selectElement = document.getElementById(id);
     var opcionSeleccionada = selectElement.options[selectElement.selectedIndex].value;
     if (opcionSeleccionada) {
-        vtexjs.checkout.setCustomData({ field: id, app: appName, value: opcionSeleccionada.split('-')[0] })
+        setCustomData({ field: id, app: appName, value: opcionSeleccionada.split('-')[0] })
     }
 }
 
@@ -936,14 +936,14 @@ const onBlurB2bForm = (name) => {
         const isChecked = $('#CFDI-required').is(':checked')
 
         if (isChecked) {
-            vtexjs.checkout
-                .setCustomData({ field: name, app: appName, value: 'true' })
+            // vtexjs.checkout
+            //     .setCustomData({ field: name, app: appName, value: 'true' })
         } else {
             if (element.length && !$(`.${name} .errorCustom`).length && isRequired) {
                 $(`.${name}`).append(`<div class="help error errorCustom">Este campo es obligatorio</div>`)
             }
-            vtexjs.checkout
-                .setCustomData({ field: name, app: appName, value: 'false' })
+            // vtexjs.checkout
+            //     .setCustomData({ field: name, app: appName, value: 'false' })
         }
     } else {
         const value = element.val()
@@ -1022,7 +1022,7 @@ console.log("isGeneralError ", isGeneralError )
                     $(`#${name} + .input-b2b-error`).html('<span style="color: red">Campo incompleto</span><br/>')
                 }
             }
-            vtexjs.checkout.setCustomData({ field: name, app: appName, value })
+            setCustomData({ field: name, app: appName, value })
         } else {
 
             const isGeneralError = fields.some(f => {
@@ -1073,4 +1073,19 @@ const removeCustomData = (name) => {
     fetch(`/api/checkout/pub/orderForm/${orderFormId}/customData/${appName}/${name}`, {
         method: 'DELETE'
     })
+}
+
+const setCustomData = (objs) => {
+    setTimeout(() => {       
+        const orderFormId = vtexjs?.checkout?.orderFormId
+        fetch(`/api/checkout/pub/orderForm/${orderFormId}/customData/${objs.app}/${objs.field}`, {
+            method: 'PUT',
+            body: JSON.stringify({
+                value: objs.value
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+    }, 100);
 }
