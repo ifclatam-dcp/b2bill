@@ -478,7 +478,7 @@ $(document).ready(function(){
             removeCustomData("number-dep");
             removeCustomData("number");
             removeCustomData("neighborhood");
-            removeCustomData("isCorporateOms");
+            // removeCustomData("isCorporateOms");
             removeCustomData("city");
             removeCustomData("cfdi-code");
             removeCustomData("business-name");
@@ -508,7 +508,7 @@ $(window).on('hashchange', function(e){
             removeCustomData("number-dep");
             removeCustomData("number");
             removeCustomData("neighborhood");
-            removeCustomData("isCorporateOms");
+            // removeCustomData("isCorporateOms");
             removeCustomData("city");
             removeCustomData("cfdi-code");
             removeCustomData("business-name");
@@ -523,7 +523,7 @@ $(window).on('hashchange', function(e){
 const onAttachmentB2BButton = () => {
     const profileContainer = $(".form-step.box-edit > .box-client-info > .row-fluid");
     const b2bButton = $("#b2b-form-container");
-
+    console.log("onAttachmentB2BButton")
     if (profileContainer && profileContainer.length && !b2bButton.length && window?.location?.hash === '#/profile') {
         if (window?.location?.hash === '#/profile') {
             removeCustomData("zipcode");
@@ -533,7 +533,7 @@ const onAttachmentB2BButton = () => {
             removeCustomData("number-dep");
             removeCustomData("number");
             removeCustomData("neighborhood");
-            removeCustomData("isCorporateOms");
+            // removeCustomData("isCorporateOms");
             removeCustomData("city");
             removeCustomData("cfdi-code");
             removeCustomData("business-name");
@@ -664,14 +664,14 @@ const onAttachmentB2BButton = () => {
                     removeCustomData("number-dep");
                     removeCustomData("number");
                     removeCustomData("neighborhood");
-                    removeCustomData("isCorporateOms");
+                    // removeCustomData("isCorporateOms");
                     removeCustomData("city");
                     removeCustomData("cfdi-code");
                     removeCustomData("business-name");
                     removeCustomData("business-line");
                     removeCustomData("address");
                     removeCustomData("RFC");
-                    setCustomData({ field: "CFDI-required", app: appName, value: "false" })
+                    onForceData();
                     
                 }
             }
